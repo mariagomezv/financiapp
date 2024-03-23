@@ -1,4 +1,4 @@
-package com.example.finnanciapp.views
+package com.example.finnanciapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
