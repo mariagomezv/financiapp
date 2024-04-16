@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1074538729469",
+    "project_id": "financiapp-e529f",
+    "storage_bucket": "financiapp-e529f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074538729469:android:bf54a0f1cddb845ab85394",
+        "android_client_info": {
+          "package_name": "com.tms.financiapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvOudb8AiTZnJvRGU05BH1C0rhKVw3wbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

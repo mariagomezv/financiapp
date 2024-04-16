@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Envio"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/cuentaWSP"
+        android:layout_width="161dp"
+        android:layout_height="55dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="account"
+        tools:ignore="MissingConstraints" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+
+    <Spinner
+        android:id="@+id/categoryWSP"
+        android:layout_width="161dp"
+        android:layout_height="55dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="category"
+        tools:ignore="MissingConstraints" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+    <EditText
+        android:id="@+id/amountWET"
+        android:background="@drawable/edit_text_bg"
+        android:layout_width="161dp"
+        android:layout_height="55dp"
+        android:hint="monto"
+        android:minHeight="48dp"
+        tools:ignore="MissingConstraints" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+    <Button
+        android:id="@+id/withDrawalBT"
+        android:background="@drawable/rounded_button"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
+        android:text="Retiro" />
+
+</LinearLayout>

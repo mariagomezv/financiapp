@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical|center_horizontal"
+    tools:context=".views.EditProfileActivity">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Editar Perfil"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+    <EditText
+        android:id="@+id/nameET"
+        android:layout_width="161dp"
+        android:layout_height="55dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Name" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+    <Spinner
+        android:id="@+id/spinnerIdType"
+        android:layout_width="161dp"
+        android:layout_height="55dp"
+        android:background="@drawable/edit_text_bg"
+        android:layout_marginTop="16dp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+    <EditText
+        android:id="@+id/identificationNumber"
+        android:layout_width="161dp"
+        android:layout_height="55dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Document Number" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+    <Button
+        android:id="@+id/updateBT"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        android:layout_gravity="center_horizontal"
+        android:text="Save" />
+</LinearLayout>

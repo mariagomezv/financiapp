@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Depósito"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Spinner para seleccionar la cuenta -->
+    <Spinner
+        android:id="@+id/cuentaDSP"
+        android:layout_width="161dp"
+        android:layout_height="55dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Cuenta"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Spinner para seleccionar la categoría -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+
+    <Spinner
+        android:id="@+id/categoryDSP"
+        android:layout_width="156dp"
+        android:layout_height="61dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Categoría"
+        tools:ignore="MissingConstraints" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+
+    <!-- EditText para ingresar el monto -->
+    <EditText
+        android:id="@+id/amountDET"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Monto"
+        android:minHeight="48dp"
+        tools:ignore="MissingConstraints" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+    <!-- Botón para realizar el depósito -->
+    <Button
+        android:id="@+id/sendDepositBT"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        android:text="Depositar" />
+
+</LinearLayout>
