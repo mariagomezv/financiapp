@@ -73,11 +73,14 @@ class HomeActivity : AppCompatActivity() {
     private fun obtenerTransacciones() {
         val transactionController = TransactionController()
         val helper = Helper()
+        helper.showToast(this, "Hola")
         transactionController.getTransactions(helper.getUserID()) { transactions ->
             // Aquí se llama al callback cuando se obtienen las transacciones
             // Puedes actualizar el RecyclerView con las transacciones obtenidas
+            helper.showToast(this, transactions.toString())
             actualizarRecyclerView(transactions)
         }
+
     }
 
     fun actualizarRecyclerView(transactions: List<Transaction>) {

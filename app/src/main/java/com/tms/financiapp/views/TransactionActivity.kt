@@ -1,7 +1,6 @@
 package com.tms.financiapp.views
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ArrayAdapter
@@ -13,15 +12,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.get
 import com.tms.financiapp.R
 import com.tms.financiapp.controllers.BankAccountController
 import com.tms.financiapp.controllers.TransactionController
 import com.tms.financiapp.helpers.EnumAdapter
 import com.tms.financiapp.helpers.Helper
-import com.tms.financiapp.models.BankAccount
 import com.tms.financiapp.models.Transaction
-import com.tms.financiapp.models.enums.IdType
 import com.tms.financiapp.models.enums.PurchaseCategory
 import com.tms.financiapp.models.enums.TransactionType
 
@@ -56,7 +52,7 @@ class TransactionActivity : AppCompatActivity() {
             button.isEnabled = false
             button.postDelayed({
                 button.isEnabled = true
-            }, 10000)
+            }, 7000)
             button.setOnClickListener {
                 val layoutId = when (index) {
                     0 -> R.layout.activity_deposit
@@ -69,13 +65,14 @@ class TransactionActivity : AppCompatActivity() {
                     updateSpinnersDeposit(accountNumbers)
                     currentTransactionType = TransactionType.DEPOSIT
                     val depositButtonSend = findViewById<Button>(R.id.sendDepositBT)
-                    depositButtonSend.setOnClickListener{
+                    depositButtonSend.setOnClickListener {
                         val userId = helper.getUserID()
                         val spinnerAccountDeposit = findViewById<Spinner>(R.id.cuentaDSP)
                         val spinnerCategoryDeposit = findViewById<Spinner>(R.id.categoryDSP)
-                        val amount =  findViewById<EditText>(R.id.amountDET)
+                        val amount = findViewById<EditText>(R.id.amountDET)
                         val date = helper.getCurrentDateString()
-                        val description = "Deposito"
+                        val category = spinnerCategoryDeposit.selectedItem.toString()
+                        val description = " Deposito"
 
                         val transaction = Transaction(
                             id = 1,
@@ -83,7 +80,7 @@ class TransactionActivity : AppCompatActivity() {
                             transactionType = currentTransactionType.code,
                             amount = amount.text.toString().toDouble(),
                             date = date,
-                            description = description,
+                            description = "$category $description",
                             account = spinnerAccountDeposit.selectedItem.toString(),
                             toAccount = ""
                         )
@@ -120,7 +117,11 @@ class TransactionActivity : AppCompatActivity() {
                 if (index == 2) {
                     updateSpinnersTransfer(accountNumbers, allAccountNumbers)
                     currentTransactionType = TransactionType.TRANSFER
-                    helper.regresarAlMainActivity(this)
+                    val transactionSendButton = findViewById<Button>(R.id.sendTransferBT)
+                    transactionSendButton.setOnClickListener{
+
+                        helper.regresarAlMainActivity(this)
+                    }
                 }
             }
         }
@@ -148,7 +149,7 @@ class TransactionActivity : AppCompatActivity() {
         spinnerAccountDeposit.adapter = adapter
 
 
-        val purchaseCategory = EnumAdapter<PurchaseCategory>(this, PurchaseCategory::class.java)
+        val purchaseCategory = EnumAdapter(this, PurchaseCategory::class.java)
         spinnerCategoryDeposit.adapter = purchaseCategory
     }
 
@@ -174,19 +175,22 @@ class TransactionActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerAccountWD.adapter = adapter
 
-        val purchaseCategory = EnumAdapter<PurchaseCategory>(this, PurchaseCategory::class.java)
+        val purchaseCategory = EnumAdapter(this, PurchaseCategory::class.java)
         spinnerCategoryWD.adapter = purchaseCategory
     }
 
     private fun updateSpinnersTransfer(bankAccounts: List<String>, allBankAccount: List<String>) {
-        val spinnerAccountWD = findViewById<Spinner>(R.id.cuentaWSP)
-        val spinnerCategoryWD = findViewById<Spinner>(R.id.categoryWSP)
+        val spinnerAccountWD = findViewById<Spinner>(R.id.cuentaTSP)
+        val spinnerCategoryWD = findViewById<Spinner>(R.id.categoryTSP)
+
+        helper.showToast(this, bankAccounts.toString())
+        helper.showToast(this, allBankAccount.toString())
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bankAccounts)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerAccountWD.adapter = adapter
 
-        val purchaseCategory = EnumAdapter<PurchaseCategory>(this, PurchaseCategory::class.java)
+        val purchaseCategory = EnumAdapter(this, PurchaseCategory::class.java)
         spinnerCategoryWD.adapter = purchaseCategory
     }
 

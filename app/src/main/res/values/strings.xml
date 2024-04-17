@@ -60,4 +60,10 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="monto">monto</string>
+    <string name="transferir">Transferir</string>
+    <string name="account">account</string>
+    <string name="cuenta_que_recibe">cuenta que recibe</string>
+    <string name="category">category</string>
+    <string name="monto1">monto</string>
+    <string name="depositar">Depositar</string>
 </resources>

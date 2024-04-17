@@ -5,6 +5,7 @@ import com.tms.financiapp.models.Transaction
 import com.tms.financiapp.models.User
 import com.google.firebase.firestore.FieldValue
 import com.tms.financiapp.models.enums.TransactionType
+import java.text.SimpleDateFormat
 
 class TransactionController {
 
@@ -74,6 +75,7 @@ class TransactionController {
                 for (document in result) {
                     transactions.add(document.toObject(Transaction::class.java))
                 }
+                transactions.sortByDescending { (SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(it.date)).toString()}
                 callback(transactions)
             }
     }

@@ -29,10 +29,12 @@ class TransactionAdapter(private val transactions: List<Transaction>) : Recycler
         private val titleTextView: TextView = itemView.findViewById(R.id.textViewTransactionTitle)
         private val typeTextView: TextView = itemView.findViewById(R.id.textViewTransactionType)
         private val amountTextView: TextView = itemView.findViewById(R.id.textViewTransactionAmount)
+        private val dateTextView: TextView = itemView.findViewById(R.id.textViewTransactionDate)
 
         fun bind(transaction: Transaction) {
             titleTextView.text = transaction.description
             amountTextView.text = transaction.amount.toString()
+            dateTextView.text = transaction.date
 
             val transactionTypeText = when (transaction.transactionType) {
                 TransactionType.DEPOSIT.code -> TransactionType.DEPOSIT.displayName
