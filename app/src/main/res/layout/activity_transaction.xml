@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ingreso" />
-
+    
         <Button
             android:id="@+id/button_two"
             android:layout_width="match_parent"
@@ -30,6 +30,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Transferencia" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <ProgressBar
+            android:id="@+id/transactioprogressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <FrameLayout
             android:id="@+id/content_container"
