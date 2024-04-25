@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +36,7 @@ class TransactionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaction)
+        val progressBarTransaction = findViewById<ProgressBar>(R.id.transactioprogressBar)
         enableEdgeToEdge()
 
         val buttons = listOf<Button>(
@@ -52,6 +54,7 @@ class TransactionActivity : AppCompatActivity() {
             button.isEnabled = false
             button.postDelayed({
                 button.isEnabled = true
+                progressBarTransaction.visibility = View.INVISIBLE
             }, 7000)
             button.setOnClickListener {
                 val layoutId = when (index) {
