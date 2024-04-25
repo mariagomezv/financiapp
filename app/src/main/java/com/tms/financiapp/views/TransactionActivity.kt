@@ -97,10 +97,11 @@ class TransactionActivity : AppCompatActivity() {
                     val withDrawalButtonSend = findViewById<Button>(R.id.withDrawalBT)
                     withDrawalButtonSend.setOnClickListener{
                         val userId = helper.getUserID()
-                        val spinnerAccountDeposit = findViewById<Spinner>(R.id.cuentaWSP)
-                        val spinnerCategoryDeposit = findViewById<Spinner>(R.id.categoryWSP)
+                        val spinnerAccountWithdrawal = findViewById<Spinner>(R.id.cuentaWSP)
+                        val spinnerCategoryWithdrawal = findViewById<Spinner>(R.id.categoryWSP)
                         val amount =  findViewById<EditText>(R.id.amountWET)
                         val date = helper.getCurrentDateString()
+                        val category = spinnerCategoryWithdrawal.selectedItem.toString()
                         val description = "Retiro"
 
                         val transaction = Transaction(
@@ -109,8 +110,8 @@ class TransactionActivity : AppCompatActivity() {
                             transactionType = currentTransactionType.code,
                             amount = amount.text.toString().toDouble(),
                             date = date,
-                            description = description,
-                            account = spinnerAccountDeposit.selectedItem.toString(),
+                            description = "$category $description",
+                            account = spinnerAccountWithdrawal.selectedItem.toString(),
                             toAccount = ""
                         )
                         transactionController.addTransaction(transaction)
