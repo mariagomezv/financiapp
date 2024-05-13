@@ -12,7 +12,7 @@
     <string name="IDNumber">Número de cédula:</string>
     <string name="accountType">Tipo de cuenta:</string>
     <string name="createAccount">Create Account</string>
-    <string name="sendCreateAccount">Crear</string>
+    <string name="sendCreateAccount">Create</string>
     <string name="edit_profile">Editar</string>
     <string name="editprofile">Edit Profile</string>
     <string name="monto_inicial">monto inicial</string>
@@ -59,11 +59,11 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="monto">monto</string>
-    <string name="transferir">Transferir</string>
-    <string name="account">account</string>
-    <string name="cuenta_que_recibe">cuenta que recibe</string>
+    <string name="monto">Amount</string>
+    <string name="transferir">Transfer</string>
+    <string name="account">Account</string>
+    <string name="cuenta_que_recibe">Receiving account</string>
     <string name="category">category</string>
-    <string name="monto1">monto</string>
-    <string name="depositar">Depositar</string>
+    <string name="monto1">Amount</string>
+    <string name="depositar">Save</string>
 </resources>

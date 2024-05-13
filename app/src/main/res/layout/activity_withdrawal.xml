@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Envio"
+        android:text="Expense"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
         android:background="@drawable/edit_text_bg"
         android:layout_width="161dp"
         android:layout_height="55dp"
-        android:hint="monto"
+        android:hint="Amount"
         android:minHeight="48dp"
         tools:ignore="MissingConstraints" />
     <Space
@@ -54,6 +54,6 @@
         android:background="@drawable/rounded_button"
         android:layout_width="124dp"
         android:layout_height="wrap_content"
-        android:text="Retiro" />
+        android:text="Save" />
 
 </LinearLayout>

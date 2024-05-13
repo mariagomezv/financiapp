@@ -21,7 +21,7 @@
         android:paddingTop="8dp"
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
-        android:text="Crear Cuenta"
+        android:text="Create account"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="24sp"

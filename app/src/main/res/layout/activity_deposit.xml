@@ -9,15 +9,16 @@
     android:orientation="vertical">
 
     <!-- Título -->
+
+    <!-- Spinner para seleccionar la cuenta -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Depósito"
+        android:text="Income"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <!-- Spinner para seleccionar la cuenta -->
     <Spinner
         android:id="@+id/cuentaDSP"
         android:layout_width="161dp"
@@ -49,7 +50,7 @@
         android:layout_width="156dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_bg"
-        android:hint="Monto"
+        android:hint="Amount"
         android:minHeight="48dp"
         tools:ignore="MissingConstraints" />
 
@@ -62,6 +63,6 @@
         android:layout_width="124dp"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_button"
-        android:text="Depositar" />
+        android:text="Save" />
 
 </LinearLayout>

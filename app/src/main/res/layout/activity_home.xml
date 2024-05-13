@@ -7,13 +7,29 @@
     android:background="@color/white"
     tools:context=".views.HomeActivity">
 
+    <TextView
+        android:id="@+id/colorSquare2"
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:background="#6C7FAF"
+        android:gravity="center"
+        android:text="FinanciApp"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="91dp"
-        android:background="#EBE7EB"
+        android:layout_marginTop="164dp"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,7 +40,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_button"
-            android:text="Agregar Transacción"
+            android:text="Add transaction"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -36,7 +52,7 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_button"
-            android:text="Crear Cuenta"
+            android:text="Create account"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -45,13 +61,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTransactions"
-        android:layout_width="0dp"
-        android:layout_height="444dp"
+        android:layout_width="412dp"
+        android:layout_height="455dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -68,7 +85,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_button"
-            android:text="Editar Perfil"
+            android:text="Edit profile"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
