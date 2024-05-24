@@ -83,6 +83,7 @@ class TransactionActivity : AppCompatActivity() {
                             transactionType = currentTransactionType.code,
                             amount = amount.text.toString().toDouble(),
                             date = date,
+                            category = category,
                             description = "$category $description",
                             account = spinnerAccountDeposit.selectedItem.toString(),
                             toAccount = ""
@@ -110,6 +111,7 @@ class TransactionActivity : AppCompatActivity() {
                             transactionType = currentTransactionType.code,
                             amount = amount.text.toString().toDouble(),
                             date = date,
+                            category = category,
                             description = "$category $description",
                             account = spinnerAccountWithdrawal.selectedItem.toString(),
                             toAccount = ""
@@ -122,9 +124,34 @@ class TransactionActivity : AppCompatActivity() {
                     updateSpinnersTransfer(accountNumbers, allAccountNumbers)
                     currentTransactionType = TransactionType.TRANSFER
                     val transactionSendButton = findViewById<Button>(R.id.sendTransferBT)
-                    transactionSendButton.setOnClickListener{
+                    transactionSendButton.setOnClickListener {
+                        val userId = helper.getUserID()
+                        val spinnerAccountFrom = findViewById<Spinner>(R.id.cuentaTSP)
+                        val spinnerCategory = findViewById<Spinner>(R.id.categoryTSP)
+                        val editTextToAccount = findViewById<EditText>(R.id.reciverCuentaT)
+                        val amount = findViewById<EditText>(R.id.amountDET)
+                        val date = helper.getCurrentDateString()
+                        val category = spinnerCategory.selectedItem.toString()
+                        val description = "Transferencia"
 
-                        helper.regresarAlMainActivity(this)
+                        val transaction = Transaction(
+                            id = 1,
+                            userId = userId,
+                            transactionType = currentTransactionType.code,
+                            amount = amount.text.toString().toDouble(),
+                            date = date,
+                            category = category,
+                            description = "$category $description",
+                            account = spinnerAccountFrom.selectedItem.toString(),
+                            toAccount = editTextToAccount.text.toString()
+                        )
+
+                        if (transaction.toAccount in allAccountNumbers){
+                            transactionController.addTransaction(transaction)
+                            helper.regresarAlMainActivity(this)
+                        } else {
+                            helper.showAlert(this, "Error", "Cuenta no existe")
+                        }
                     }
                 }
             }

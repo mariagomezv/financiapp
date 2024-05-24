@@ -43,7 +43,17 @@ class TransactionController {
                             TransactionType.TRANSFER.code -> {
                                 if (account.balance >= transaction.amount) {
                                     val newBalance = account.balance - transaction.amount
-                                    account.copy(balance = newBalance)
+                                    bankAccountController.getBalanceByAccountNumber(transaction.toAccount){ balance ->
+                                        if (balance != null) {
+                                            // Manejar el balance de la cuenta
+                                            val newBalanceReciver = balance + transaction.amount
+                                            bankAccountController.updateBalanceInAccounts(transaction.toAccount, newBalanceReciver)
+                                        } else {
+                                            // La cuenta no fue encontrada o hubo un error
+                                            println("No se pudo obtener el balance de la cuenta 123456")
+                                        }
+                                    }
+                                    bankAccountController.updateBalanceInAccounts(account.accountNumber, newBalance)
                                 } else {
                                     // Insufficient balance, return the account unchanged
                                     account

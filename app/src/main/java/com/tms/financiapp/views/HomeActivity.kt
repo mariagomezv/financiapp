@@ -2,7 +2,13 @@ package com.tms.financiapp.views
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tms.financiapp.R
+import com.tms.financiapp.controllers.BankAccountController
 import com.tms.financiapp.controllers.TransactionAdapter
 import com.tms.financiapp.controllers.TransactionController
 import com.tms.financiapp.helpers.Helper
@@ -26,10 +33,27 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
         createAccount()
+        viewCharts()
         editProfile()
         addTransaction()
         obtenerTransacciones()
+        setupAccountBalanceSection()
     }
+
+    /*private fun setupPieChartButton() {
+        val pieChartButton = findViewById<Button>(R.id.viewPieChart)
+        pieChartButton.setOnClickListener {
+            obtenerTransacciones { transactions ->
+                showPieChartActivity(transactions)
+            }
+        }
+    }*/
+
+    /*private fun showPieChartActivity(transactions: List<Transaction>) {
+        val intent = Intent(this, ChartActivity::class.java)
+        intent.putParcelableArrayListExtra("transactions", ArrayList(transactions))
+        startActivity(intent)
+    }*/
 
     private fun showEditProfileActivity() {
         val accountActivity: Intent = Intent(this, EditProfileActivity::class.java)
@@ -41,11 +65,24 @@ class HomeActivity : AppCompatActivity() {
         startActivity(accountActivity)
     }
 
+    private fun showChartActivity() {
+        val chartActivity: Intent = Intent(this, ChartActivity::class.java)
+        startActivity(chartActivity)
+    }
+
     private fun createAccount() {
         val createAccountButton = findViewById<Button>(R.id.createAccount)
 
         createAccountButton.setOnClickListener {
             showAccountActivity()
+        }
+    }
+
+    private fun viewCharts() {
+        val chartActivityButton = findViewById<Button>(R.id.viewChart)
+
+        chartActivityButton.setOnClickListener {
+            showChartActivity()
         }
     }
 
@@ -73,14 +110,44 @@ class HomeActivity : AppCompatActivity() {
     private fun obtenerTransacciones() {
         val transactionController = TransactionController()
         val helper = Helper()
-        helper.showToast(this, "Hola")
         transactionController.getTransactions(helper.getUserID()) { transactions ->
             // Aquí se llama al callback cuando se obtienen las transacciones
             // Puedes actualizar el RecyclerView con las transacciones obtenidas
-            helper.showToast(this, transactions.toString())
             actualizarRecyclerView(transactions)
         }
+    }
 
+    private fun setupAccountBalanceSection() {
+        val accountBalanceContainer = findViewById<LinearLayout>(R.id.account_balance_container)
+
+        // Obtener las cuentas del usuario
+        val userId = Helper().getUserID() // Reemplaza esto con la función que obtiene el ID del usuario autenticado
+        BankAccountController().getBankAccounts(userId) { accounts ->
+            val accountNumbers = accounts.map { it.accountNumber }
+            val accountBalances = accounts.map { it.balance }
+            val totalBalance = accountBalances.sum()
+
+            // Configurar el Spinner
+            val spinnerAccounts = accountBalanceContainer.findViewById<Spinner>(R.id.spinner_accounts)
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, accountNumbers)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerAccounts.adapter = adapter
+
+            // Configurar el listener del Spinner
+            spinnerAccounts.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    val selectedBalance = accountBalances[position]
+                    val tvAccountBalance = accountBalanceContainer.findViewById<TextView>(R.id.tv_account_balance)
+                    tvAccountBalance.text = resources.getString(R.string.account_balance, selectedBalance)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
+            // Mostrar el saldo total
+            val tvTotalBalance = accountBalanceContainer.findViewById<TextView>(R.id.tv_total_balance)
+            tvTotalBalance.text = resources.getString(R.string.total_balance_amount, totalBalance)
+        }
     }
 
     fun actualizarRecyclerView(transactions: List<Transaction>) {

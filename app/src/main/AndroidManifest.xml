@@ -15,6 +15,9 @@
         android:theme="@style/Theme.FinanciApp"
         tools:targetApi="31">
         <activity
+            android:name=".views.ChartActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.TransactionActivity"
             android:exported="false" />
         <activity

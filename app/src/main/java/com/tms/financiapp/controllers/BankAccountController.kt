@@ -42,7 +42,15 @@ class BankAccountController {
             }
         }
     }
-
+    fun verifyAccountExists(accountNumber: String, callback: (Boolean) -> Unit) {
+        val accountsCollection = db.collection("accounts")
+        accountsCollection.whereEqualTo("accountNumber", accountNumber)
+            .get()
+            .addOnSuccessListener { documents ->
+                val accountExists = !documents.isEmpty()
+                callback(accountExists)
+            }
+    }
     // Update the balance of a bank account
     fun updateBalance(userId: String, accountNumber: String, newBalance: Double) {
         val userRef = db.collection("users").document(userId)
@@ -72,7 +80,24 @@ class BankAccountController {
                 }
             }
     }
-
+    fun getBalanceByAccountNumber(accountNumber: String, callback: (Double?) -> Unit) {
+        val accountsCollection = db.collection("accounts")
+        accountsCollection.whereEqualTo("accountNumber", accountNumber)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty()) {
+                    // No se encontró una cuenta con el número proporcionado
+                    callback(null)
+                } else {
+                    val account = documents.documents.first().toObject(BankAccount::class.java)
+                    callback(account?.balance)
+                }
+            }
+            .addOnFailureListener {
+                // Error al obtener el balance de la cuenta
+                callback(null)
+            }
+    }
     fun createBankAccount(bankAccount: BankAccount) {
             getUserDocument(bankAccount.accountNumber).set(bankAccount)
         }
