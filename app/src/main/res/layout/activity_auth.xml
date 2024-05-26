@@ -64,7 +64,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/colorSquare"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/colorSquare"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/colorSquare" />
 
     <EditText

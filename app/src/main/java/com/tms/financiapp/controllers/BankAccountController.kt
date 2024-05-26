@@ -8,7 +8,7 @@ import com.tms.financiapp.models.User
 
 
 class BankAccountController {
-    private val db = FirebaseFirestore.getInstance()
+    var db = FirebaseFirestore.getInstance()
 
     // Add a new bank account to a user
     fun addBankAccount(userId: String, bankAccount: BankAccount) {

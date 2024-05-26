@@ -9,7 +9,7 @@ import com.tms.financiapp.models.Transaction
 import com.tms.financiapp.models.User
 
 class UserController {
-    private val db = FirebaseFirestore.getInstance()
+    var db = FirebaseFirestore.getInstance()
 
     // Get the user document for the given ID
     private fun getUserDocument(userId: String): DocumentReference {

@@ -8,46 +8,85 @@
     android:background="@color/white"
     tools:context=".views.ChartActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Titulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#6C7FAF"
+            android:gravity="center"
+            android:text="FinanciApp"
+            android:textColor="#FFFFFF"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
     </com.github.mikephil.charting.charts.PieChart>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pieChart"
         app:layout_constraintVertical_bias="0.5">
 
         <Button
+            android:id="@+id/generateBarChartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="16dp"
+            android:text="Generar Gráfica"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
             android:id="@+id/startDateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inicio" />
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="7dp"
+            android:text="Inicio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/endDateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fin" />
+            android:layout_marginTop="7dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="Fin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/generateBarChartButton"
+            app:layout_constraintStart_toEndOf="@+id/startDateButton"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/generateBarChartButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Generar Gráfica" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout6"

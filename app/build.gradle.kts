@@ -37,6 +37,10 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -58,4 +62,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation ("androidx.test:core:1.4.0")
+    testImplementation ("com.google.truth:truth:1.4.2")
+    testImplementation ("org.robolectric:robolectric:4.12.2")
+    testImplementation ("org.mockito:mockito-core:5.12.0")
+    testImplementation ("org.mockito:mockito-inline:5.2.0") // For mocking final classes and methods
+    testImplementation ("junit:junit:4.13.2")
 }
