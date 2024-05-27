@@ -56,6 +56,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("com.google.android.material:material:1.12.0")
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)

@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.tms.financiapp.R
 import com.tms.financiapp.controllers.BankAccountController
 import com.tms.financiapp.controllers.TransactionAdapter
@@ -23,6 +24,7 @@ import com.tms.financiapp.helpers.Helper
 import com.tms.financiapp.models.Transaction
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,6 +40,11 @@ class HomeActivity : AppCompatActivity() {
         addTransaction()
         obtenerTransacciones()
         setupAccountBalanceSection()
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
+        swipeRefreshLayout.setOnRefreshListener {
+            actualizarVista()
+            swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     /*private fun setupPieChartButton() {
@@ -55,6 +62,10 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }*/
 
+    private fun actualizarVista() {
+        obtenerTransacciones()
+        setupAccountBalanceSection()
+    }
     private fun showEditProfileActivity() {
         val accountActivity: Intent = Intent(this, EditProfileActivity::class.java)
         startActivity(accountActivity)
