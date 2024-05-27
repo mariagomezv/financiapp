@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="16dp"
-            android:text="Generar Gráfica"
+            android:text="Generate graph"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="7dp"
-            android:text="Inicio"
+            android:text="Initial date"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -80,7 +80,7 @@
             android:layout_marginTop="7dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:text="Fin"
+            android:text="Final date"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/generateBarChartButton"
             app:layout_constraintStart_toEndOf="@+id/startDateButton"
