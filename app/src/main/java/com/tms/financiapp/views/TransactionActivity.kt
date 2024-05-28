@@ -214,8 +214,8 @@ class TransactionActivity : AppCompatActivity() {
         val spinnerAccountWD = findViewById<Spinner>(R.id.cuentaTSP)
         val spinnerCategoryWD = findViewById<Spinner>(R.id.categoryTSP)
 
-        helper.showToast(this, bankAccounts.toString())
-        helper.showToast(this, allBankAccount.toString())
+       // helper.showToast(this, bankAccounts.toString())
+       // helper.showToast(this, allBankAccount.toString())
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bankAccounts)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
